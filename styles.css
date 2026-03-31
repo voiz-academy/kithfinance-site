@@ -51,6 +51,22 @@ body {
   min-height: 100vh;
 }
 
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -159,7 +175,19 @@ section {
 }
 
 section + section {
-  border-top: 1px solid rgba(232, 230, 227, 0.10);
+  border-top: none;
+  position: relative;
+}
+
+section + section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(480px, 80%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 165, 116, 0.2) 30%, rgba(212, 165, 116, 0.2) 70%, transparent 100%);
 }
 
 /* ========================================
@@ -432,12 +460,25 @@ section + section {
 }
 
 .card-number {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--color-amber);
   letter-spacing: 0.1em;
   margin-bottom: 16px;
+  width: 36px;
+  height: 32px;
+  position: relative;
+}
+
+.card-number::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(212, 165, 116, 0.08);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
 .card h3 {
@@ -534,6 +575,13 @@ section + section {
 .cta-section .btn-primary {
   padding: 16px 40px;
   font-size: 15px;
+  box-shadow: 0 0 30px rgba(212, 165, 116, 0.25), 0 0 60px rgba(212, 165, 116, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.cta-section .btn-primary:hover {
+  box-shadow: 0 0 40px rgba(212, 165, 116, 0.4), 0 0 80px rgba(212, 165, 116, 0.15);
+  transform: translateY(-1px);
 }
 
 /* ========================================
@@ -585,9 +633,24 @@ section + section {
 
 .feature-item-number {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 11px;
   color: var(--color-amber);
-  padding-top: 2px;
+  letter-spacing: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 32px;
+  position: relative;
+  margin-top: 2px;
+}
+
+.feature-item-number::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(212, 165, 116, 0.08);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
 .feature-item h3 {
