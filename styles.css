@@ -329,26 +329,8 @@ section + section::before {
 }
 
 .slideshow-dots {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  display: flex;
-  gap: 6px;
-  padding: 10px 14px;
-  background: linear-gradient(180deg, rgba(26, 29, 33, 0.9) 0%, transparent 100%);
+  display: none;
 }
-
-.slideshow-dots span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.slideshow-dots span:nth-child(1) { background: #ff5f57; }
-.slideshow-dots span:nth-child(2) { background: #febc2e; }
-.slideshow-dots span:nth-child(3) { background: #28c840; }
 
 .slideshow-track {
   position: absolute;
