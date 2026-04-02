@@ -289,7 +289,7 @@
 
     <p><strong>Computational environment.</strong> The ability to act, not just think. To produce a financial model, not describe one. To pull data from a source, transform it, output a deliverable, and feed that deliverable into the next task. Without this, AI is a conversation partner. Smart, but unable to do anything. Claude Code is this component. It turns reasoning into execution.</p>
 
-    <p><strong>The live human mind.</strong> Twenty years of pattern recognition in an industry. The sense that something is off before you can articulate why. The decision to pursue this angle rather than that one. No encoding captures this fully. It's not a gap to be closed by better documentation. It's permanently illegible &mdash; the human isn't a temporary limitation of the system. The human is a permanent component.</p>
+    <p><strong>The live human mind.</strong> Twenty years of pattern recognition in an industry. The sense that something is off before you can articulate why. The decision to pursue this angle rather than that one. No encoding captures this fully. It's not a gap to be closed by better documentation. It's permanently illegible. The human isn't a temporary limitation of the system. The human is a permanent component.</p>
 
     <div class="article-divider"></div>
 
@@ -297,17 +297,17 @@
 
     <p>Here's where most descriptions stop. Four components, all necessary. But the interaction produces something none of them contain individually.</p>
 
-    <p>When a senior investment professional opens a session with full context loaded &mdash; the firm's knowledge base, computational tools ready to execute, and frontier inference available for any task &mdash; the model doesn't just answer questions better. It becomes a different kind of collaborator.</p>
+    <p>When a senior investment professional opens a session with full context loaded (the firm's knowledge base, computational tools ready to execute, frontier inference available for any task), the model doesn't just answer questions better. It becomes a different kind of collaborator.</p>
 
-    <p>The mechanism is what we call joint search across two fundamentally different knowledge structures. The model's knowledge is weighted by prevalence &mdash; what appears frequently across all of human text is strongly connected. The investment professional's knowledge is weighted by consequence &mdash; what actually happened when real money was on the line. These are structurally different maps of the same territory. Neither is complete. Neither is reducible to the other.</p>
+    <p>The mechanism is what we call joint search across two fundamentally different knowledge structures. The model's knowledge is weighted by prevalence: what appears frequently across all of human text is strongly connected. The investment professional's knowledge is weighted by consequence: what actually happened when real money was on the line. These are structurally different maps of the same territory. Neither is complete. Neither is reducible to the other.</p>
 
-    <p>In practice, it looks like this: the model surfaces a pattern from across its enormous knowledge base &mdash; perhaps a structural parallel between the current deal and dynamics in an adjacent industry. The human recognizes something. Not what they were looking for, but something significant in light of what they know from decades of experience. This recognition generates a new direction. The model follows it into territory neither could have reached alone.</p>
+    <p>In practice, it looks like this: the model surfaces a pattern from across its enormous knowledge base, say a structural parallel between the current deal and dynamics in an adjacent industry. The human recognizes something. Not what they were looking for, but something significant in light of what they know from decades of experience. This recognition generates a new direction. The model follows it into territory neither could have reached alone.</p>
 
     <p class="standout">The search objective is being rewritten in real time by what the search itself reveals.</p>
 
-    <p>A concrete example. A portfolio manager running this architecture on a hedge fund's research process dispatches what we call a hunting party &mdash; a directed, adversarial search for vulnerable consensus. The system identifies what the market believes about a name, decomposes the load-bearing assumptions, and attacks them with specific evidence. Each finding generates the next question. The attack is a chain, not a fork &mdash; path-dependent, where step three only exists because step two happened.</p>
+    <p>A concrete example. A portfolio manager running this architecture on a hedge fund's research process dispatches what we call a hunting party: a directed, adversarial search for vulnerable consensus. The system identifies what the market believes about a name, decomposes the load-bearing assumptions, and attacks them with specific evidence. Each finding generates the next question. The attack is a chain, not a fork. Path-dependent, where step three only exists because step two happened.</p>
 
-    <p>The PM reads the output in sixty seconds and catches what the system missed &mdash; not because the system was wrong, but because the PM's consequence-weighted experience flags a dimension the prevalence-weighted model wouldn't prioritize. The PM redirects. The system executes. The thesis either survives the full chain of attacks or it cracks. Either way, the output has a conviction quality that no amount of parallel bull-and-bear analysis can produce.</p>
+    <p>The PM reads the output in sixty seconds and catches what the system missed. Not because the system was wrong, but because the PM's consequence-weighted experience flags a dimension the prevalence-weighted model wouldn't prioritize. The PM redirects. The system executes. The thesis either survives the full chain of attacks or it cracks. Either way, the output has a conviction quality that no amount of parallel bull-and-bear analysis can produce.</p>
 
     <p>This is not a feature that can be added to Bloomberg.</p>
 
@@ -317,11 +317,11 @@
 
     <p>Bloomberg's ASKB is an impressive engineering achievement. But it illustrates the fundamental limitation.</p>
 
-    <p>ASKB is a set of pre-defined agents, each specialized in querying a specific Bloomberg content silo. When it does quantitative work, it generates BQL &mdash; Bloomberg's existing query language. The data access boundary is the same one that existed before AI. Every new workflow needs to be designed, built, tested, and shipped by Bloomberg developers.</p>
+    <p>ASKB is a set of pre-defined agents, each specialized in querying a specific Bloomberg content silo. When it does quantitative work, it generates BQL, Bloomberg's existing query language. The data access boundary is the same one that existed before AI. Every new workflow needs to be designed, built, tested, and shipped by Bloomberg developers.</p>
 
     <p><strong>Bloomberg built a motor.</strong> Engineered velocity. Predictable, reliable, constrained. Same speed regardless of how much more powerful models become.</p>
 
-    <p><strong>The Claude Code architecture is a sail.</strong> Maximum surface area exposed to model capability. Minimum structure constraining it. When models get 2x better &mdash; and they will, repeatedly &mdash; the motor needs to be rebuilt. The sail just goes faster.</p>
+    <p><strong>The Claude Code architecture is a sail.</strong> Maximum surface area exposed to model capability. Minimum structure constraining it. When models get 2x better (and they will, repeatedly), the motor needs to be rebuilt. The sail just goes faster.</p>
 
     <p>But the deeper problem is strategic. Bloomberg's business model requires democratization. They sell the same terminal to 325,000 subscribers. ASKB makes every subscriber slightly better at the same things simultaneously.</p>
 
@@ -339,9 +339,9 @@
 
     <p>The Claude Code architecture has a growth function with two independent variables.</p>
 
-    <p><strong>Variable one: model improvement.</strong> Every frontier model release makes every deployment better automatically, with zero development work. When Anthropic ships a more capable model, everything the architecture does improves &mdash; reasoning quality, execution speed, breadth of capability. No feature request needed. No developer sprint. No upgrade cycle.</p>
+    <p><strong>Variable one: model improvement.</strong> Every frontier model release makes every deployment better automatically, with zero development work. When Anthropic ships a more capable model, everything the architecture does improves: reasoning quality, execution speed, breadth of capability. No feature request needed. No developer sprint. No upgrade cycle.</p>
 
-    <p><strong>Variable two: institutional knowledge accumulation.</strong> Every analysis, every deal memo, every IC decision, every operational playbook adds to the firm's encoded local context. Six months in, the system knows your firm in a way no software product ever could. The output stops being generic and starts being distinctively yours &mdash; because the context steering inference is distinctively yours.</p>
+    <p><strong>Variable two: institutional knowledge accumulation.</strong> Every analysis, every deal memo, every IC decision, every operational playbook adds to the firm's encoded local context. Six months in, the system knows your firm in a way no software product ever could. The output stops being generic and starts being distinctively yours, because the context steering inference is distinctively yours.</p>
 
     <p class="standout">These two variables multiply, not add.</p>
 
@@ -349,7 +349,7 @@
 
     <p>No other product in the market improves on both axes. Bloomberg improves when Bloomberg ships updates. AlphaSense improves when AlphaSense ships updates. The Claude Code architecture improves when Anthropic ships a better model AND when a firm does more work through the system.</p>
 
-    <p>The compounding rate is structurally higher. And the accumulated institutional intelligence becomes the real switching cost &mdash; not contractual lock-in, not data format dependency. The knowledge a firm builds into the architecture is what makes leaving prohibitively expensive, because it cannot be ported to a point solution that doesn't understand it.</p>
+    <p>The compounding rate is structurally higher. And the accumulated institutional intelligence becomes the real switching cost. Not contractual lock-in, not data format dependency. The knowledge a firm builds into the architecture is what makes leaving prohibitively expensive, because it cannot be ported to a point solution that doesn't understand it.</p>
 
     <div class="article-divider"></div>
 
@@ -357,7 +357,7 @@
 
     <p>One more structural shift. The Model Context Protocol (MCP) is unbundling data from interfaces. FactSet announced MCP support in December 2025. Bloomberg has built MCP-compatible tool exposure. PitchBook is partnering with AI providers to make private market data consumable outside their terminal.</p>
 
-    <p>The data that used to require a specific vendor's interface is becoming directly consumable by any LLM &mdash; including the Claude Code architecture. The terminal is no longer the only way in.</p>
+    <p>The data that used to require a specific vendor's interface is becoming directly consumable by any LLM, including the Claude Code architecture. The terminal is no longer the only way in.</p>
 
     <p>For firms running the Claude Code architecture, MCP turns every data provider into a plug-in. One reasoning engine, accessing everything, constrained by nothing except the quality of the firm's judgment.</p>
 
@@ -365,7 +365,7 @@
 
     <h2>Implications</h2>
 
-    <p>The firms building this architecture now are creating advantages that cannot be replicated by purchasing software. The atomic unit is institutional &mdash; the people, the context, the architecture. It can't be licensed. It can't be copied. And it compounds.</p>
+    <p>The firms building this architecture now are creating advantages that cannot be replicated by purchasing software. The atomic unit is institutional: the people, the context, the architecture. It can't be licensed. It can't be copied. And it compounds.</p>
 
     <p>A firm that has run the full system for two years will operate at a level that no collection of SaaS AI tools can approach. Not because the tools are bad, but because the architecture is categorically different &mdash; the way a fully integrated organism is categorically different from a collection of specialized cells in separate dishes.</p>
 

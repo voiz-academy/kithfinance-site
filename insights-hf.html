@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hunting Party — Kith OS</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Article layout */
+    .article-header {
+      padding: 120px 32px 48px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .article-header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--color-text-tertiary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      margin-bottom: 32px;
+    }
+
+    .back-link:hover {
+      color: var(--color-amber);
+    }
+
+    .article-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: 20px;
+    }
+
+    .article-header h1 {
+      font-size: clamp(30px, 4.5vw, 42px);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      max-width: 720px;
+    }
+
+    .article-meta {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--color-text-tertiary);
+    }
+
+    .article-meta a {
+      color: var(--color-text-secondary);
+      transition: color 0.2s ease;
+    }
+
+    .article-meta a:hover {
+      color: var(--color-amber);
+    }
+
+    /* Article body */
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 32px 100px;
+    }
+
+    .article-body p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--color-text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .article-body p.lead {
+      font-size: 20px;
+      line-height: 1.65;
+      color: var(--color-text-primary);
+      font-weight: 400;
+    }
+
+    .article-body p.standout {
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    .article-body h2 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 64px;
+      margin-bottom: 28px;
+      line-height: 1.25;
+      color: var(--color-text-primary);
+    }
+
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+
+    .article-body strong {
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    .article-body em {
+      font-style: italic;
+    }
+
+    .article-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--color-amber);
+      opacity: 0.3;
+      margin: 56px 0;
+    }
+
+    /* Series nav */
+    .series-link {
+      display: block;
+      background: linear-gradient(135deg, rgba(232, 230, 227, 0.03) 0%, rgba(232, 230, 227, 0.01) 100%);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-top: 40px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .series-link:hover {
+      border-color: var(--color-border-hover);
+      background: linear-gradient(135deg, rgba(232, 230, 227, 0.06) 0%, rgba(212, 165, 116, 0.06) 100%);
+    }
+
+    .series-link .series-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: 6px;
+    }
+
+    .series-link h4 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+    }
+
+    .series-link p {
+      font-size: 14px !important;
+      color: var(--color-text-tertiary) !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* Author card */
+    .author-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 32px;
+      background: linear-gradient(135deg, rgba(232, 230, 227, 0.03) 0%, rgba(232, 230, 227, 0.01) 100%);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      margin-top: 24px;
+    }
+
+    .author-card h4 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      margin-bottom: 2px;
+    }
+
+    .author-card p {
+      font-size: 14px !important;
+      color: var(--color-text-tertiary) !important;
+      margin-bottom: 0 !important;
+    }
+
+    @media (max-width: 768px) {
+      .article-header {
+        padding: 100px 24px 36px;
+      }
+
+      .article-body {
+        padding: 48px 24px 80px;
+      }
+
+      .article-body h2 {
+        font-size: 24px;
+      }
+
+      .author-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="index.html">
+      <img src="kith-os-wordmark.svg" alt="kith / os" class="nav-wordmark">
+    </a>
+    <ul class="nav-links">
+      <li><a href="pe.html">Private Equity</a></li>
+      <li><a href="hf.html">Hedge Funds</a></li>
+      <li><a href="insights.html" class="active">Insights</a></li>
+      <li><a href="mailto:diego@kithailab.com" class="nav-cta">See a Demo</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Article Header -->
+  <div class="article-header">
+    <div class="article-header-inner">
+      <a href="insights.html" class="back-link">&larr; Insights</a>
+      <p class="article-tag">Hedge Funds</p>
+      <h1>The Hunting Party</h1>
+      <p class="article-meta">The Claude Code architecture in hedge fund research</p>
+      <p class="article-meta">By Diego Espinosa &middot; March 2026</p>
+    </div>
+  </div>
+
+  <!-- Article Body -->
+  <div class="article-body">
+
+    <p class="lead">Hedge funds live and die by edge. The ability to see something the market does not, size it correctly, and act before the window closes.</p>
+
+    <p>The first paper in this series explained what the Claude Code architecture is and why it will displace SaaS AI. The second examined its mechanism: joint search across two fundamentally different knowledge structures. This paper applies both to the specific domain where the architecture's properties matter most: hedge fund research.</p>
+
+    <p>The Claude Code architecture has structural properties that map directly to how edge is created and maintained. The architecture's specific design, when configured for the hedge fund research process, produces a categorically different kind of research output. One that enables work that was previously impossible.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>The Hunting Party: Directed Adversarial Search</h2>
+
+    <p>The centerpiece of the architecture applied to hedge funds is what we call the hunting party. A hunting party is a directed search with a kill mandate: go to a section of the coverage landscape, identify the consensus belief, decompose it into its load-bearing assumptions, and attack those assumptions with specific evidence.</p>
+
+    <p>The mandate is specific: identify what consensus is relying on and try to break it.</p>
+
+    <p>The critical design principle is path dependence. The attack is a chain. Each finding generates the next question. You do not know the third question until you have answered the second. The verdict emerges from where the path ends.</p>
+
+    <p>A concrete example. Enterprise AI adoption looks slow (14% in production). Bearish for semiconductor demand. But license and deal growth is fast (Agentforce +50% QoQ, Copilot +160% YoY). Does this kill the bear case? The system attacks the counterevidence: are licenses converting to production usage? Usage metrics are thin (3.3% Copilot penetration, "not yet reflected in revenue"). Over 60% of deals are upsells to existing customers, not new adoption. The bull counter is weaker than it looks. Enterprises are buying options, not deploying. Back to the original thesis, but now on a stronger evidence chain.</p>
+
+    <p>Steps three through five only exist because step two happened. Step four is the real insight, and you never reach it if you stop at step two and call the analysis "balanced."</p>
+
+    <p class="standout">This is the failure mode the architecture prevents. Running bull and bear cases in parallel, weighing them side by side, and declaring "both sides have evidence." That is a debate format. It produces balanced verdicts that sound rigorous but are actually a failure to follow the scent.</p>
+
+    <p>Weighing does not produce conviction. Surviving does.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>Conviction Through Survival</h2>
+
+    <p>An assumption earns its verdict by surviving the full chain of attacks. You attack. If the assumption is still standing when the chain terminates, it has earned its place. That survival is the conviction. If it cracked under pressure, the crack is the finding. There is no middle ground.</p>
+
+    <p>Two verdicts only. Holds (attacked through the full chain, consensus survived) or Cracked (specific, concrete evidence that this assumption is vulnerable, and the counterevidence did not survive pressure). There is no "Inconclusive." If you attacked and could not crack it, it holds. The system does not get an escape hatch that avoids commitment.</p>
+
+    <p>This is categorically different from parallel bull/bear analysis. Every experienced PM knows the problem with traditional research: the analyst produces a bear case and a bull case, each with supporting evidence, and the PM is left to weigh them. The weighing is where conviction should live, but the format makes conviction impossible. Both sides always have evidence. The work product describes the debate without resolving it.</p>
+
+    <p>The hunting party resolves because the chain forces resolution. When you find evidence against consensus, you must test that evidence. Testing means attacking the counterevidence. If the counterevidence survives your attack, the original thesis dies. If the counterevidence cracks under pressure, the original thesis strengthens. Either way, you keep going until you reach conviction.</p>
+
+    <p class="standout">New analysts weigh. Experienced analysts attack until conviction appears.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>Joint Search: Why the PM's Mind Is Irreplaceable</h2>
+
+    <p>The architecture creates a new form of collaboration between two structurally different kinds of knowledge.</p>
+
+    <p>The model's knowledge is weighted by prevalence: what appears frequently across all of human text is strongly connected. The PM's knowledge is weighted by consequence: what actually happened when real money was on the line. These are structurally different maps of the same territory. Neither is complete. Neither is reducible to the other.</p>
+
+    <p>A prevalence-weighted map shows you where everything is. A consequence-weighted map shows you what actually matters. The PM who lost $200 million on a thesis that looked perfect on paper has a node in their knowledge graph that no model can replicate. That node is judgment, forged by consequence. It fires when something in the model's output pattern-matches to the shape of that loss, even when the PM cannot articulate why.</p>
+
+    <p>In the hunting party process, this manifests precisely. The system runs the adversarial chain at machine speed. The PM reads the output in sixty seconds and catches what the system missed, because the PM's consequence-weighted experience flags dimensions the prevalence-weighted model would not prioritize.</p>
+
+    <p>The PM says: "You didn't attack on this dimension." Or: "I like this thread, press harder here." Or: "This crack reminds me of something I saw in 2018. Go check whether the same dynamic is present."</p>
+
+    <p>The system executes. The search objective has been rewritten by what the search itself revealed. The PM's recognition of something significant in the model's output, significant in light of decades of experience, generates a new direction the model follows into territory neither could have reached alone.</p>
+
+    <p>A better prompt or a longer context window cannot replicate this. It requires a live human mind with consequence-weighted knowledge operating in real time on the model's output.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>The Three-Stage Pipeline</h2>
+
+    <p>The hunting party is Stage 1 in a three-stage pipeline that maps directly to how hedge funds actually generate and execute ideas.</p>
+
+    <p><strong>Stage 1: Signal generation.</strong> High-volume, low-commitment. Automated campaigns sweep terrain on rotation (sector by sector, thematic, event-driven). The PM dispatches targeted searches against specific suspicions. Many parties run. Most assumptions hold. A few crack. The PM scans reports in sixty seconds. The system does the volume work.</p>
+
+    <p><strong>Stage 2: PM interrogation.</strong> The PM picks a crack and enters the conversation. The system carries the thesis from Stage 1. The PM interrogates it. This replicates how hedge funds actually work: adversarial critical thinking among humans carrying ideas. On a trading desk, it is not the idea that gets interrogated. It is the person carrying it. Here, the system carries the idea. The PM tests whether it holds.</p>
+
+    <p>The PM's skill is navigating the model's tendencies. Knowing when the system is defending with real evidence versus performing conviction. Knowing when a concession was warranted versus agreement bias. This is a craft that develops with practice. It is a returns driver.</p>
+
+    <p><strong>Stage 3: Production.</strong> What survives Stage 2 becomes actionable. Full model variant, trade map, position sizing, research note. The system builds the deliverable. The PM approves.</p>
+
+    <p class="standout">The division of labor is structural. The system does the volume work (Stage 1) and the production work (Stage 3). The PM does the selection and judgment work (Stage 2). Neither can do the other's job well.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>Speed, Correctly Understood</h2>
+
+    <p>The architecture produces research at machine speed. A hunting party that would take an analyst days to execute runs in minutes. But speed is not the primary value. Speed is the enabler of something more important: research that was not previously possible.</p>
+
+    <p>Consider the operating rhythm. The system sweeps the coverage universe on rotation, attacking consensus on every name. When something cracks, the PM gets the evidence chain. The PM redirects in real time. Sixty seconds to read the output, catch what the system missed, redirect. The system executes again. This loop can iterate dozens of times in an hour.</p>
+
+    <p>No analyst team can do this. The volume of directed adversarial search required exceeds what humans can produce at any speed. An analyst covering twenty names spends 60-70% of their time on production rather than analysis: updating models, formatting outputs, pulling data. The remaining time is consumed by the names that are currently active, leaving the rest of the coverage universe unexamined.</p>
+
+    <p>The architecture inverts this. Coverage maintenance becomes automated infrastructure. Earnings calendar triggers a queue. The queue dispatches model rebuild agents overnight. The analyst wakes up to a diff showing what changed and what is newly attackable. Hunting parties run against warm, current data. The analyst's time is freed for the highest-value activity: Stage 2 interrogation of theses that survived the system's adversarial chain.</p>
+
+    <p>The result is broader, deeper, and more adversarial research, conducted continuously across the entire coverage universe, with the PM's judgment applied precisely where it matters most.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>Encoded Local Context: The Compounding Edge</h2>
+
+    <p>Every hedge fund has institutional knowledge that exists nowhere in the model's training data. The specific way a PM reads management team body language on earnings calls. The pattern a sector analyst noticed across three earnings cycles that has not been written about. The thesis that looked perfect but failed because of a dynamic that only became visible in hindsight.</p>
+
+    <p>In the Claude Code architecture, this knowledge is encoded as reference files that the model reads before every interaction. Investment frameworks. Sector playbooks. Past thesis successes and failures. Pattern recognition distilled from decades of experience. This encoded context steers the model's inference away from generic consensus and toward the specific edges the firm has identified.</p>
+
+    <p>The important point is what counts as valuable context. Most firms overvalue their data. The model has already read everything publicly available, probably more thoroughly than internal documents do. The genuinely valuable local context is what the model cannot already have. The specific deal dynamics. The competitive insight only a few people have noticed. The institutional knowledge that has not been written down because nobody thought to.</p>
+
+    <p>This context compounds. Every hunting party report tells the system what held and what cracked. Every Stage 2 kill tells it what sounded good but did not survive PM scrutiny. Every successful trade tells it what the evidence chain looks like when the thesis is right. After four quarters, the system has a year of cross-sector observations. After two years, a richly interconnected map of the economy through the team's collective lens.</p>
+
+    <p class="standout">A new entrant with the same model does not have the substrata. A firm with a less capable model but deeper substrata may outperform a firm with a more capable model starting cold.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>The Democratization Problem</h2>
+
+    <p>Bloomberg's ASKB is an impressive engineering achievement. But its business model requires democratization. Bloomberg sells the same terminal to 325,000 subscribers. ASKB makes every subscriber slightly better at the same things simultaneously.</p>
+
+    <p>For a hedge fund, this is the opposite of edge. If every fund running Bloomberg gets the same ASKB workflows on the same day, the insight window is zero. The analytical advantage is zero. Everyone does the same work slightly faster.</p>
+
+    <p>The AI-native research platforms (AlphaSense, Hebbia, Rogo, Brightwave) have the same structural limitation. They give you AI-powered read access to documents. They do not write to your systems of record. They do not accumulate your institutional knowledge. They do not compound your firm's IP. They deliver the same product to every customer. When your competitor buys the same tool, the advantage cancels out.</p>
+
+    <p>The Claude Code architecture concentrates capability in the specific firm. The encoded local context is yours. The hunting party attack chains reflect your coverage universe, your analytical frameworks, your pattern recognition. The institutional memory accumulates in your environment. No competitor can buy what you have built, because it was built from the interaction between the architecture and your firm's specific judgment over time.</p>
+
+    <p class="standout">Bloomberg democratizes AI across finance. The Claude Code architecture concentrates it within a single firm.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>What Improves as Models Improve</h2>
+
+    <p>The architecture has a growth function with two independent variables that multiply.</p>
+
+    <p><strong>Model improvement.</strong> Every frontier model release makes every deployment better automatically. Stage 1 quality improves: more sophisticated attack chains, better identification of load-bearing assumptions, better pursuit of non-obvious evidence paths. Coverage maintenance becomes cheaper, faster, and more accurate. Evidence quality assessment improves. No feature request needed. No developer sprint. No upgrade cycle.</p>
+
+    <p><strong>Institutional knowledge accumulation.</strong> Every earnings cycle makes the data layer richer. Every hunting party report tells you what held and what cracked. Every PM interrogation session refines the firm's analytical frameworks. The encoded context deepens. The system's output becomes less generic and more distinctively the firm's.</p>
+
+    <p>What does not improve with model capability: Stage 2. PM interrogation improves with PM skill. The division of labor is structural. The craft of navigating the model's tendencies, distinguishing real evidence from performed conviction, catching what the chain missed, is a human skill that develops through practice. It is the highest-leverage skill in the architecture. The PM who develops it outperforms.</p>
+
+    <p>A firm running this architecture for two years has something fundamentally different from a firm starting today. The gap widens. It does not narrow.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>The Question for Hedge Funds</h2>
+
+    <p>The technology is here. Models are intelligent enough. The computational environment exists. The hunting party methodology has been validated through live execution.</p>
+
+    <p>The structural properties are clear: directed adversarial search at machine speed, joint search across incommensurable knowledge structures, conviction through survival, compounding institutional context, and concentration of capability in the specific firm.</p>
+
+    <p>The remaining question is organizational. Which firms can configure the architecture for their specific process, train their PMs and analysts to operate as the fourth component of the system, and begin accumulating the institutional knowledge that becomes the compounding advantage?</p>
+
+    <p>The firms that build this first will have an edge that cannot be replicated by purchasing software. The hunting party is an operating model. The encoded context is institutional memory. The PM's craft in Stage 2 is a skill that develops through hundreds of hours of practice.</p>
+
+    <p>These are not things a competitor can buy next quarter. They are things that must be built, over time, in the specific context of the specific firm. And they compound.</p>
+
+    <!-- Series links -->
+    <a href="insights-cc-architecture.html" class="series-link">
+      <div class="series-label">Paper 1 in this series</div>
+      <h4>Why the Claude Code Architecture Will Beat SaaS AI</h4>
+      <p>What investment managers need to know, and why it matters now</p>
+    </a>
+
+    <!-- Author -->
+    <div class="author-card">
+      <div>
+        <h4>Diego Espinosa</h4>
+        <p>CEO & Co-Founder, Kith AI Lab. Former #1 ranked equity research analyst, Research Director at Bernstein, and $10B portfolio manager.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="kith-os-wordmark.svg" alt="kith / os" class="footer-wordmark">
+    <p>Part of Kith AI Lab &middot; <a href="mailto:diego@kithailab.com">diego@kithailab.com</a></p>
+  </footer>
+
+</body>
+</html>
